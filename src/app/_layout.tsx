@@ -1,24 +1,20 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Stack } from "expo-router";
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+/*
+Root Layout.
+Defines stack navigator that wraos everything inside of app/
+creates a stack navigation context at the root where the first screen in the stack is the entier tabs group, not just an individual screen.
+so the whole tab navigator is nested inside a stack.
+*/
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
-
+// _layout.tsx files are where you define navigators like Tab and navigation stack
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <Stack screenOptions={{ headerShown: false }}>
+      
+      <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+      <Stack.Screen name="explore" />
+    </Stack>
   );
 }

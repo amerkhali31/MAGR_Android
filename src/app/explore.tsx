@@ -1,4 +1,4 @@
-import { Image } from 'expo-image';
+/*import { Image } from 'expo-image';
 import { Platform, StyleSheet } from 'react-native';
 
 import { Collapsible } from '@/components/ui/collapsible';
@@ -110,3 +110,14 @@ const styles = StyleSheet.create({
     gap: 8,
   },
 });
+*/
+
+import { Text, View } from "react-native";
+
+export default function HomeScreen() {
+  return (
+    <View>
+      <Text>Explore</Text>
+    </View>
+  );
+}
