@@ -1,9 +1,12 @@
-import { Stack } from "expo-router";
+// src/app/(tabs)/prayer_times/_layout.tsx
 
-export default function PrayerTimesStack() {
+import { Stack } from "expo-router";
+import AppStack from "../../../components/navigation/AppStack";
+
+export default function HomeStack() {
   return (
-    <Stack screenOptions={{ headerShown: true }}>
-      <Stack.Screen name="index" options={{ title: "Prayer Times" }} />
-    </Stack>
+    <AppStack>
+      <Stack.Screen name="index"/>
+    </AppStack>
   );
 }

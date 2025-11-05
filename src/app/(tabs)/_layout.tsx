@@ -1,13 +1,22 @@
+// src/app/(tabs)/_layout.tsx
+
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 
 export default function TabsLayout() {
   return (
     <Tabs
-      initialRouteName="home" // 👈 sets Home as the startup screen
+      initialRouteName="home"
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: "#1e90ff",
+        tabBarActiveTintColor: "#fff",
+        tabBarStyle: {
+          backgroundColor: "transparent",
+          borderTopWidth: 0,
+          elevation: 0,
+          position: "absolute",
+        },
+        sceneStyle: { backgroundColor: "transparent" },
       }}
     >
       <Tabs.Screen
@@ -27,8 +36,7 @@ export default function TabsLayout() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home-outline" color={color} size={size} />
           ),
-        }}
-      />
+        }} />
 
       <Tabs.Screen
         name="settings"
@@ -37,8 +45,8 @@ export default function TabsLayout() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="settings-outline" color={color} size={size} />
           ),
-        }}
-      />
+        }} />
+
     </Tabs>
   );
 }
