@@ -2,6 +2,13 @@ Steps:
 
   - Get basic file structure and simple skeleton
   - Get home screen set up
+    - Create custom reusable buttons (announcements, hadith, contact, donate, feedback)
+    - create next prayer button
+    - scroll view
+    - calendar
+    - modals for hadith, contact, and feedback
+    - redirect to website for donate
+    - new page for announcements
   - Communicate with Firebase to grab data
   - Get tabs set up
   - Get Modals set up
