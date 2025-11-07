@@ -1,6 +1,12 @@
-// components/PrayerBox.tsx
 import React from "react";
-import { Image, ImageSourcePropType, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  ImageSourcePropType,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 type Prayer = {
   name: string;
@@ -8,28 +14,45 @@ type Prayer = {
 };
 
 type PrayerBoxProps = {
-  icon: ImageSourcePropType;
+  icon: React.ReactNode;
   mosqueImage: ImageSourcePropType;
   prayer: Prayer;
   countdownText?: string;
   onPress?: () => void;
 };
 
-export default function PrayerBox({ icon, mosqueImage, prayer, countdownText = "", onPress }: PrayerBoxProps) {
+export default function PrayerBox({
+  icon,
+  mosqueImage,
+  prayer,
+  countdownText = "",
+  onPress,
+}: PrayerBoxProps) {
   return (
     <Pressable style={styles.container} onPress={onPress}>
-      <Image source={mosqueImage} style={styles.mosqueImage} resizeMode="cover" />
-      <View style={styles.overlay} />
-      <View style={styles.content}>
-        <View style={styles.header}>
-          <Image source={icon} style={styles.icon} resizeMode="contain" />
-          <Text style={styles.topLabel}>Next Prayer: {prayer.name}</Text>
+      {/* 🟢 ImageBackground handles positioning automatically */}
+      <ImageBackground
+        source={mosqueImage}
+        style={styles.imageBackground}
+        imageStyle={styles.image} // controls how the image itself is drawn
+        resizeMode="cover" // show entire image inside box
+      >
+        <View style={styles.overlay} />
+
+        <View style={styles.content}>
+          <View style={styles.header}>
+            {icon}
+            <Text style={styles.topLabel}>Next Prayer: {prayer.name}</Text>
+          </View>
+
+          <View style={styles.bottomSection}>
+            <Text style={styles.countdownLabel}>{countdownText}</Text>
+            <Text style={styles.iqamaLabel}>
+              {`${prayer.name} Iqama at ${prayer.iqama}`}
+            </Text>
+          </View>
         </View>
-        <View style={styles.bottomSection}>
-          <Text style={styles.countdownLabel}>{countdownText}</Text>
-          <Text style={styles.iqamaLabel}>{`${prayer.name} Iqama at ${prayer.iqama}`}</Text>
-        </View>
-      </View>
+      </ImageBackground>
     </Pressable>
   );
 }
@@ -41,16 +64,20 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     borderWidth: 2,
     borderColor: "black",
-    height: 100,
+    height: 150,
     marginVertical: 10,
   },
-  mosqueImage: {
-    ...StyleSheet.absoluteFillObject,
+  imageBackground: {
+    flex: 1,
+    justifyContent: "center", // centers content vertically
+  },
+  image: {
     opacity: 0.5,
+    alignSelf: "center", // ✅ centers the actual image horizontally
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0,0,0,0.3)", // subtle dark overlay to improve contrast
+    backgroundColor: "rgba(0,0,0,0.3)",
   },
   content: {
     flex: 1,
@@ -61,21 +88,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  icon: {
-    width: 30,
-    height: 30,
-    tintColor: "green",
-    marginRight: 10,
-  },
   topLabel: {
     fontSize: 24,
     fontWeight: "bold",
     color: "white",
+    marginLeft: 10,
   },
   countdownLabel: {
     fontSize: 44,
     fontWeight: "bold",
-    color: "#00FF7F", // similar to your named "magr1"
+    color: "#00FF7F",
   },
   iqamaLabel: {
     fontSize: 12,
