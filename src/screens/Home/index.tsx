@@ -1,7 +1,9 @@
-// src/app/(tabs)/home/index.tsx
+// src/screens/Home/index.tsx
+
 import HomeBox from "@/screens/Home/components/HomeBox";
 import { Feather } from "@expo/vector-icons";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
+import { useRouter } from "expo-router";
 import React from "react";
 import { ScrollView, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -10,6 +12,7 @@ import PrayerBox from "./components/PrayerBox";
 export default function HomeScreen() {
   const tabBarHeight = useBottomTabBarHeight();
   const insets = useSafeAreaInsets();
+  const router = useRouter();
 
   return (
     <View
@@ -34,14 +37,14 @@ export default function HomeScreen() {
             mosqueImage={require("../../../assets/images/mosque.png")}
             prayer={{ name: "Maghrib", iqama: "6:30 PM" }}
             countdownText="00:14:22"
-            onPress={() => console.log("Tapped PrayerBox")}
+            onPress={() => router.push("/(tabs)/prayer_times")}
           />
 
           <HomeBox
             Icon={<Feather name="bell" size={30} color="#00FF7F" />}
             topText="Announcements"
             bottomText="Stay up to date with MAGR news"
-            onPress={() => console.log("Tapped Prayer Times")}
+            onPress={() => router.push("/(tabs)/home/announcements")}
           />
           <HomeBox
             Icon={<Feather name="book-open" size={30} color="#00FF7F" />}

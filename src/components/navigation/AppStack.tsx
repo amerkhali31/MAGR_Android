@@ -12,6 +12,7 @@ export default function AppStack({ children }: PropsWithChildren) {
     <Stack
       screenOptions={{
         headerShown: false,
+        headerStyle: {backgroundColor: "transparent"},
         contentStyle: { backgroundColor: "transparent" },
       }}
     >

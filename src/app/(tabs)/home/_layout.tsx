@@ -7,7 +7,7 @@ export default function HomeStack() {
   return (
     <AppStack>
       <Stack.Screen name="index"/>
-      <Stack.Screen name="test_screen" options={{ title: "Test Screen" }} />
+      <Stack.Screen name="announcements" />
     </AppStack>
   );
 }
