@@ -1,9 +1,4 @@
-import { Text, View } from "react-native";
+// src/app/(tabs)/prayer_times/index.tsx
+import PrayerScreen from "@/screens/Prayer/index";
 
-export default function HomeScreen() {
-  return (
-    <View>
-      <Text>Prayer Times Pages</Text>
-    </View>
-  );
-}
+export default PrayerScreen;
