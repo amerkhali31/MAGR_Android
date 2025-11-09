@@ -1,18 +1,42 @@
 // src/screens/Settings/index.tsx
-import { View } from "react-native";
+import { Daily_Prayer_Names_list } from "@/constants/prayers";
+import { Text, View } from "react-native";
 import SettingsBox from "./components/SettingsBox";
 
 export default function SettingsScreen() {
+
   return (
     <View style={{ flex: 1, padding: 20 }}>
+
+      <Text
+        style={{
+          textAlign: "center",   // ← centers the text horizontally
+          fontSize: 24,          // ← makes text larger
+          color: "white",        // ← changes text color
+          fontWeight: "600",     // optional: makes it semi-bold
+        }}
+      >
+        Notification Preferences
+      </Text>
+
+      {Daily_Prayer_Names_list.map((name, index) => (
+        <SettingsBox
+          key={name}
+          title={name}
+          description={`Set notification preferences for ${name}`}
+          onPress={() => console.log("Tapped Notifications")}
+        />
+      ))}
+
       <SettingsBox
-        title="Notifications"
-        description="Manage Adhan and Iqama alerts"
-        onPress={() => console.log("Tapped Notifications")}
+        title="Jumaa"
+        description="Set notification preferences for Jumaa"
+        onPress={() => console.log("Tapped Appearance")}
       />
+      
       <SettingsBox
-        title="Appearance"
-        description="Customize theme and color scheme"
+        title="Membership renewal"
+        description="Set notification preferences for Membership Renewals"
         onPress={() => console.log("Tapped Appearance")}
       />
     </View>
