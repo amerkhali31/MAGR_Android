@@ -42,34 +42,30 @@ export default function PrayerView({
   const iqamaLabel = prayer.iqama;
 
   return (
-    <Pressable style={styles.container} onPress={onPress}>
-      {/* Left Icon */}
-      <Feather name={iconName} size={30} color="white" style={styles.icon} />
+<Pressable style={styles.container} onPress={onPress}>
+  <Feather name={iconName} size={30} color="white" style={styles.icon} />
 
-      {/* Left Label */}
-      <Text style={[styles.text, styles.prayerLabel]}>{prayerLabel}</Text>
+  <Text style={[styles.text, styles.prayerLabel]}>{prayerLabel}</Text>
 
-      {/* Center Label */}
-      <View style={styles.center}>
-        <Text style={styles.text}>{adhanLabel}</Text>
-      </View>
+  {/* ✅ Centered adhan label */}
+  <View style={styles.centerAbsolute}>
+    <Text style={styles.text}>{adhanLabel}</Text>
+  </View>
 
-      {/* Right Label */}
-      <View style={styles.rightGroup}>
-        <Text style={styles.text}>{iqamaLabel}</Text>
-
-        {showAlarm && (
-          <Pressable onPress={handleToggleAlarm} hitSlop={10}>
-            <Ionicons
-              name="alarm-outline"
-              size={20}
-              color={status ? "white" : "gray"}
-              style={{ marginLeft: 8 }}
-            />
-          </Pressable>
-        )}
-      </View>
-    </Pressable>
+  <View style={styles.rightGroup}>
+    <Text style={styles.text}>{iqamaLabel}</Text>
+    {showAlarm && (
+      <Pressable onPress={handleToggleAlarm} hitSlop={10}>
+        <Ionicons
+          name="alarm-outline"
+          size={20}
+          color={status ? "white" : "gray"}
+          style={{ marginLeft: 8 }}
+        />
+      </Pressable>
+    )}
+  </View>
+</Pressable>
   );
 }
 
@@ -98,6 +94,12 @@ const styles = StyleSheet.create({
   },
   center: {
     flex: 1,
+    alignItems: "center",
+  },
+    centerAbsolute: {
+    position: "absolute",
+    left: 0,
+    right: 0,
     alignItems: "center",
   },
   rightGroup: {
