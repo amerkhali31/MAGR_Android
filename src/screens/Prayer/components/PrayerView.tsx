@@ -55,14 +55,12 @@ export default function PrayerView({
   <View style={styles.rightGroup}>
     <Text style={styles.text}>{iqamaLabel}</Text>
     {showAlarm && (
-      <Pressable onPress={handleToggleAlarm} hitSlop={10}>
         <Ionicons
           name="alarm-outline"
           size={20}
           color={status ? "white" : "gray"}
           style={{ marginLeft: 8 }}
         />
-      </Pressable>
     )}
   </View>
 </Pressable>

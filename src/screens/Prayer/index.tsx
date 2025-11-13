@@ -1,10 +1,12 @@
 // src/screens/Prayer/index.tsx
 import { Daily_Prayer_Names_list, Prayer_Names } from "@/constants/prayers";
+import { useRouter } from "expo-router";
 import React from "react";
 import { Text, View } from "react-native";
 import PrayerView from "./components/PrayerView";
 
 export default function PrayerScreen() {
+  const router = useRouter();
   return (
     <View style={{ flex: 1, alignItems: "center", padding: 20, width: "100%" }}>
       {/* ✅ Header Row */}
@@ -48,6 +50,7 @@ export default function PrayerScreen() {
           key={name}
           prayer={{ name: name, adhan: "00:01", iqama: "00:02" }}
           iconName="sun"
+          onPress={() => router.push(`/(tabs)/settings/notificationsettings?prayer=${name}`)}
         />
       ))}
 

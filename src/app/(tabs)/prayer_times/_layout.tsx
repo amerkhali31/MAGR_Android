@@ -7,6 +7,7 @@ export default function HomeStack() {
   return (
     <AppStack>
       <Stack.Screen name="index"/>
+      <Stack.Screen name="notificationsettings"/>
     </AppStack>
   );
 }
