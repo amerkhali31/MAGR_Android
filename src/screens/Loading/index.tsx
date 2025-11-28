@@ -1,5 +1,5 @@
 // src/screens/Loading/index.tsx
-
+/* Networking Example Code */
 import { doc, getDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { Button, Text, View } from "react-native";

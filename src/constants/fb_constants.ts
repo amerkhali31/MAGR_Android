@@ -31,3 +31,16 @@ export const DAILY_TIMES = {
     },
   },
 };
+
+export const ANNOUNCEMENTS = {
+	COLLECTION: "announcements",
+	DOCUMENTS: {
+		ANNOUNCEMENTS: {
+			NAME: "announcements",
+			FIELDS: {
+				URLS: "urls"
+			}
+		}
+
+	}
+};
